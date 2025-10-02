@@ -1,0 +1,360 @@
+/* Import Font (Jika Diperlukan) & Reset */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    background-color: #F5F5DC;
+    color: #4a2c1a;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ================== 1. ANIMASI SPLASH SCREEN ================== */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+#splash-screen.fade-out {
+    opacity: 0;
+}
+
+.splash-logo {
+    width: 150px;
+    animation: bounceIn 1s ease-out;
+}
+
+.splash-text {
+    font-size: 2.5rem;
+    color: #4a2c1a;
+    letter-spacing: 4px;
+    margin-top: 1rem;
+    animation: fadeIn 1s ease-out 0.5s backwards;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 1. Navbar */
+header {
+    background-color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* ================== 3. HOVER LOGO HEADER ================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo img {
+    height: 55px;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4a2c1a;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #7a5a2a;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li {
+    position: relative;
+    padding: 0 1.5rem;
+}
+
+nav ul li:not(:last-child)::after {
+    content: "|";
+    position: absolute;
+    right: -1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d9c9a3;
+    font-size: 1.2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #4a2c1a;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    position: relative; /* Untuk garis bawah */
+    padding-bottom: 5px; /* Jarak untuk garis bawah */
+}
+
+/* ================== 2. HOVER NAVBAR ================== */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c0392b; /* Warna merah */
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #c0392b; /* Warna merah */
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #4a2c1a;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Section Header / Hero */
+.hero-banner, .sejarah-banner {
+    position: relative;
+    line-height: 1;
+    overflow: hidden; /* Untuk menahan zoom gambar */
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease-in-out; /* Transisi untuk zoom */
+}
+/* ================== 4. HOVER IMAGE HEADER & SEJARAH ================== */
+.hero-banner:hover .banner-image,
+.sejarah-banner:hover .banner-image {
+    transform: scale(1.03);
+}
+
+.hero-content {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); text-align: center;
+    width: 100%; margin-top: -3%;
+}
+.hero-content .hero-logo { width: 140px; }
+.hero-content h2 { font-size: 2.2rem; letter-spacing: 4px; color: #4a2c1a; }
+.hero-content p { font-size: 1rem; letter-spacing: 3px; color: #6b4a2a; }
+
+/* Section Sejarah Wayang */
+.container-sejarah {
+    position: absolute; top: 25%; left: 50%;
+    transform: translateX(-50%); text-align: center;
+    width: 100%;
+}
+.sejarah-banner h3 { font-size: 2.8rem; letter-spacing: 3px; color: #4a2c1a; }
+.sejarah-banner p { font-size: 1.2rem; letter-spacing: 2px; color: #4a2c1a; }
+
+.sejarah-content {
+    padding: 5rem 0; display: flex; flex-direction: column; gap: 3rem;
+}
+.sejarah-item { display: flex; align-items: center; gap: 3rem; }
+.sejarah-item.reverse { flex-direction: row-reverse; }
+.sejarah-text { flex: 1; font-size: 1.1rem; font-weight: 700; text-align: justify; }
+
+/* ================== 5. HOVER TEKS SEJARAH ================== */
+.sejarah-text span {
+    display: inline-block; /* Agar transform bekerja */
+    transition: all 0.2s ease;
+}
+
+.sejarah-text span:hover {
+    color: #c0392b;
+    transform: scale(1.1) translateY(-2px);
+}
+
+
+.sejarah-image { flex: 1; display: flex; justify-content: center; align-items: center; }
+.sejarah-image img { max-width: 300px; filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2)); }
+
+/* Section Banner & Koleksi */
+.koleksi-banner img { width: 100%; display: block; }
+.koleksi-kami { padding: 4rem 0; text-align: center; }
+.koleksi-kami h4 { font-size: 2.5rem; margin-bottom: 2rem; letter-spacing: 2px; }
+.koleksi-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
+.search-bar input { width: 300px; padding: 0.75rem 1.5rem; border: 1px solid #d9c9a3; border-radius: 50px; font-size: 1rem; font-family: 'Cormorant Garamond', serif; }
+.filter-buttons { display: flex; gap: 1rem; }
+.filter-buttons button { background: transparent; border: 1px solid #7a5a2a; border-radius: 20px; padding: 0.6rem 1.5rem; font-family: inherit; font-weight: 600; color: #4a2c1a; cursor: pointer; transition: all 0.3s ease; }
+.filter-buttons button:hover, .filter-buttons button.active { background-color: #7a5a2a; color: #fff; }
+.koleksi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ================== 7. HOVER CARD KOLEKSI ================== */
+.koleksi-card {
+    background-color: #e9e5d1;
+    height: 200px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.koleksi-card:hover {
+    background-color: #6a1e2a; /* Warna merah maroon */
+    transform: translateY(-5px);
+}
+
+/* Section Kritik & Saran */
+.kritik-saran { padding: 6rem 0; background-color: #F5F5DC; }
+.kritik-saran-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: flex-start; }
+.kritik-saran-intro h2 { font-size: 4rem; font-weight: 400; line-height: 1.1; color: #8B4513; }
+.kritik-saran-intro h2 span { font-family: 'Times New Roman', Times, serif; font-style: italic; font-weight: 400; }
+.kritik-saran-intro p { margin-top: 1.5rem; font-size: 1.1rem; color: #6b4a2a; }
+.kritik-saran-form { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; }
+.form-group { display: flex; flex-direction: column; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group label { font-size: 0.9rem; margin-bottom: 0.5rem; color: #4a2c1a; font-weight: 600; }
+.form-group input, .form-group select, .form-group textarea { background: transparent; border: none; border-bottom: 1px solid #8B4513; padding: 0.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #4a2c1a; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-bottom-color: #a0522d; }
+.form-group select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%234A2C1A' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.5rem center; cursor: pointer; }
+.form-group textarea { resize: vertical; }
+.form-group.submit-area { align-items: flex-end; margin-top: 1rem; }
+.kritik-saran-form button { background: transparent; border: 1px solid #8B4513; border-radius: 50px; padding: 0.8rem 2.5rem; font-family: inherit; font-size: 1.1rem; color: #8B4513; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.kritik-saran-form button:hover { background-color: #8B4513; color: #fff; }
+
+/* Section Footer */
+footer {
+    background-color: #6a1e2a; color: #f0e6d2; padding: 5rem 0 2rem 0;
+}
+.footer-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem;
+    border-bottom: 1px solid #8c3b40; padding-bottom: 3rem; margin-bottom: 2rem;
+}
+.footer-logo { max-width: 150px; margin-bottom: 1.5rem; }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-socials svg { width: 24px; height: 24px; }
+.footer-socials svg path { stroke: #f0e6d2; transition: stroke 0.3s ease; }
+.footer-socials a:hover svg path { stroke: #D4AF37; }
+.footer-links h4 { font-size: 1.2rem; color: #D4AF37; margin-bottom: 1rem; font-weight: 600; }
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links ul li { margin-bottom: 0.75rem; line-height: 1.5; }
+
+/* ================== 6. HOVER TEKS FOOTER ================== */
+.footer-links a, .footer-links ul li {
+    color: #f0e6d2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover, .footer-links ul li:hover {
+    color: #D4AF37;
+}
+
+.footer-copyright { text-align: center; font-size: 0.9rem; color: #b3a088; }
+.scroll-to-top {
+    position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
+    background-color: transparent; border: 1px solid #D4AF37; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; text-decoration: none;
+    transition: all 0.3s ease;
+}
+.scroll-to-top svg path { stroke: #D4AF37; transition: stroke 0.3s ease; }
+.scroll-to-top:hover { background-color: #D4AF37; }
+.scroll-to-top:hover svg path { stroke: #6a1e2a; }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hamburger-menu { display: block; }
+    nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; transform: none; }
+    nav.active { max-height: 300px; }
+    nav ul { flex-direction: column; width: 100%; padding: 0; gap: 0; }
+    nav ul li { text-align: center; padding: 1rem 0; border-bottom: 1px solid #f0f0f0; }
+    nav ul li:not(:last-child)::after { content: none; }
+    .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .sejarah-item { flex-direction: column !important; }
+    .kritik-saran-wrapper, .footer-grid { grid-template-columns: 1fr; }
+    .koleksi-controls { flex-direction: column; gap: 2rem; }
+    .koleksi-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-content h2, .sejarah-banner h3 { font-size: 1.8rem; }
+    .hero-content p, .sejarah-banner p { font-size: 0.9rem; }
+    .hero-content .hero-logo { width: 100px; }
+}
+
+@media (max-width: 768px) {
+    .sejarah-image img { max-width: 200px; }
+    .koleksi-grid { grid-template-columns: repeat(2, 1fr); }
+    .filter-buttons { flex-wrap: wrap; justify-content: center; }
+    .hero-content h2, .sejarah-banner h3 { font-size: 1.5rem; }
+    .hero-content p, .sejarah-banner p { font-size: 0.8rem; }
+    .hero-content .hero-logo { width: 80px; }
+    .container-sejarah { top: 20%; }
+    .kritik-saran-form { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .footer-socials { justify-content: center; }
+    .footer-about { display: flex; flex-direction: column; align-items: center; }
+}
