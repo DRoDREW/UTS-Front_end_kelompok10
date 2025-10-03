@@ -1,10 +1,14 @@
-/* Import Font (Jika Diperlukan) & Reset */
+/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
 }
 
 body {
@@ -16,6 +20,10 @@ body {
 }
 
 /* ================== 1. ANIMASI SPLASH SCREEN ================== */
+.modal-open {
+    overflow: hidden;
+}
+
 #splash-screen {
     position: fixed;
     top: 0;
@@ -84,7 +92,7 @@ header {
     position: relative;
 }
 
-/* ================== 3. HOVER LOGO HEADER ================== */
+/* ================== 2. HOVER LOGO HEADER ================== */
 .logo {
     display: flex;
     align-items: center;
@@ -147,11 +155,12 @@ nav ul li a {
     font-size: 1rem;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-    position: relative; /* Untuk garis bawah */
-    padding-bottom: 5px; /* Jarak untuk garis bawah */
+    position: relative;
+    padding-bottom: 5px;
 }
 
-/* ================== 2. HOVER NAVBAR ================== */
+/* ================== 3. HOVER NAVBAR ================== */
+
 nav ul li a::after {
     content: '';
     position: absolute;
@@ -159,12 +168,12 @@ nav ul li a::after {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #c0392b; /* Warna merah */
+    background-color: #c0392b;
     transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #c0392b; /* Warna merah */
+    color: #c0392b;
 }
 
 nav ul li a:hover::after {
@@ -187,20 +196,21 @@ nav ul li a:hover::after {
     transition: all 0.3s ease-in-out;
 }
 
-/* Section Header / Hero */
 .hero-banner, .sejarah-banner {
     position: relative;
     line-height: 1;
-    overflow: hidden; /* Untuk menahan zoom gambar */
+    overflow: hidden;
 }
 
 .banner-image {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.5s ease-in-out; /* Transisi untuk zoom */
+    transition: transform 0.5s ease-in-out;
 }
+
 /* ================== 4. HOVER IMAGE HEADER & SEJARAH ================== */
+
 .hero-banner:hover .banner-image,
 .sejarah-banner:hover .banner-image {
     transform: scale(1.03);
@@ -215,7 +225,6 @@ nav ul li a:hover::after {
 .hero-content h2 { font-size: 2.2rem; letter-spacing: 4px; color: #4a2c1a; }
 .hero-content p { font-size: 1rem; letter-spacing: 3px; color: #6b4a2a; }
 
-/* Section Sejarah Wayang */
 .container-sejarah {
     position: absolute; top: 25%; left: 50%;
     transform: translateX(-50%); text-align: center;
@@ -232,8 +241,9 @@ nav ul li a:hover::after {
 .sejarah-text { flex: 1; font-size: 1.1rem; font-weight: 700; text-align: justify; }
 
 /* ================== 5. HOVER TEKS SEJARAH ================== */
+
 .sejarah-text span {
-    display: inline-block; /* Agar transform bekerja */
+    display: inline-block;
     transition: all 0.2s ease;
 }
 
@@ -246,7 +256,6 @@ nav ul li a:hover::after {
 .sejarah-image { flex: 1; display: flex; justify-content: center; align-items: center; }
 .sejarah-image img { max-width: 300px; filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2)); }
 
-/* Section Banner & Koleksi */
 .koleksi-banner img { width: 100%; display: block; }
 .koleksi-kami { padding: 4rem 0; text-align: center; }
 .koleksi-kami h4 { font-size: 2.5rem; margin-bottom: 2rem; letter-spacing: 2px; }
@@ -257,19 +266,63 @@ nav ul li a:hover::after {
 .filter-buttons button:hover, .filter-buttons button.active { background-color: #7a5a2a; color: #fff; }
 .koleksi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 
-/* ================== 7. HOVER CARD KOLEKSI ================== */
+/* ================== 6. HOVER CARD KOLEKSI ================== */
+
 .koleksi-card {
     background-color: #e9e5d1;
-    height: 200px;
+    height: auto;
+    min-height: 250px; 
     border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.koleksi-card:hover {
-    background-color: #6a1e2a; /* Warna merah maroon */
-    transform: translateY(-5px);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    cursor: pointer;
+    transition: all 0.3s ease; 
 }
 
-/* Section Kritik & Saran */
+.koleksi-card:hover {
+    background-color: #f0e6d2; 
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.koleksi-card.is-hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; 
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 0.5rem 1rem 1rem;
+}
+
+.card-content h5 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: #4a2c1a;
+}
+
+.card-content p {
+    display: none; 
+}
+
+
 .kritik-saran { padding: 6rem 0; background-color: #F5F5DC; }
 .kritik-saran-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: flex-start; }
 .kritik-saran-intro h2 { font-size: 4rem; font-weight: 400; line-height: 1.1; color: #8B4513; }
@@ -287,7 +340,6 @@ nav ul li a:hover::after {
 .kritik-saran-form button { background: transparent; border: 1px solid #8B4513; border-radius: 50px; padding: 0.8rem 2.5rem; font-family: inherit; font-size: 1.1rem; color: #8B4513; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
 .kritik-saran-form button:hover { background-color: #8B4513; color: #fff; }
 
-/* Section Footer */
 footer {
     background-color: #6a1e2a; color: #f0e6d2; padding: 5rem 0 2rem 0;
 }
@@ -304,7 +356,8 @@ footer {
 .footer-links ul { list-style: none; padding: 0; }
 .footer-links ul li { margin-bottom: 0.75rem; line-height: 1.5; }
 
-/* ================== 6. HOVER TEKS FOOTER ================== */
+/* ================== 7. HOVER TEKS FOOTER ================== */
+
 .footer-links a, .footer-links ul li {
     color: #f0e6d2;
     text-decoration: none;
@@ -320,12 +373,87 @@ footer {
     background-color: transparent; border: 1px solid #D4AF37; border-radius: 50%;
     display: flex; justify-content: center; align-items: center; text-decoration: none;
     transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+.scroll-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
 }
 .scroll-to-top svg path { stroke: #D4AF37; transition: stroke 0.3s ease; }
 .scroll-to-top:hover { background-color: #D4AF37; }
 .scroll-to-top:hover svg path { stroke: #6a1e2a; }
 
-/* Responsive Design */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    color: #4a2c1a;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #c0392b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body img {
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.modal-body h3 {
+    font-size: 2rem;
+    color: #8B4513;
+    margin-bottom: 0.5rem;
+}
+
+.modal-body p {
+    font-size: 1.1rem;
+    text-align: justify;
+    padding: 0 1rem;
+}
+
+
 @media (max-width: 1024px) {
     .hamburger-menu { display: block; }
     nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; transform: none; }
@@ -339,7 +467,7 @@ footer {
     .sejarah-item { flex-direction: column !important; }
     .kritik-saran-wrapper, .footer-grid { grid-template-columns: 1fr; }
     .koleksi-controls { flex-direction: column; gap: 2rem; }
-    .koleksi-grid { grid-template-columns: repeat(3, 1fr); }
+    .koleksi-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-content h2, .sejarah-banner h3 { font-size: 1.8rem; }
     .hero-content p, .sejarah-banner p { font-size: 0.9rem; }
     .hero-content .hero-logo { width: 100px; }
@@ -347,7 +475,7 @@ footer {
 
 @media (max-width: 768px) {
     .sejarah-image img { max-width: 200px; }
-    .koleksi-grid { grid-template-columns: repeat(2, 1fr); }
+    .koleksi-grid { grid-template-columns: 1fr; }
     .filter-buttons { flex-wrap: wrap; justify-content: center; }
     .hero-content h2, .sejarah-banner h3 { font-size: 1.5rem; }
     .hero-content p, .sejarah-banner p { font-size: 0.8rem; }

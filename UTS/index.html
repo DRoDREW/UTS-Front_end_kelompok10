@@ -6,7 +6,8 @@
     <title>Wayantara - Wayang Nusantara</title>
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="stylesheet" href="style.css" />
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <body>
     <div id="splash-screen">
         <img src="assets/logo.png" alt="Wayantara Logo" class="splash-logo">
@@ -25,8 +26,8 @@
             <nav>
                 <ul>
                     <li><a href="#">BERANDA</a></li>
-                    <li><a href="#">SEJARAH</a></li>
-                    <li><a href="#">KOLEKSI</a></li>
+                    <li><a href="#sejarah-section">SEJARAH</a></li>
+                    <li><a href="#koleksi-utama-section">KOLEKSI</a></li>
                 </ul>
             </nav>
             <button class="hamburger-menu" aria-label="Buka Navigasi">
@@ -47,7 +48,7 @@
             </div>
         </section>
 
-        <section class="sejarah">
+        <section class="sejarah" id="sejarah-section">
             <div class="sejarah-banner">
                 <img src="assets/sejarah.png" alt="Sejarah Wayang Banner" class="banner-image">
                 <div class="container-sejarah">
@@ -70,7 +71,7 @@
                 <div class="sejarah-item reverse">
                     <div class="sejarah-text">
                         <p>
-                           Memasuki era kerajaan Hindu-Buddha, wayang mengalami transformasi besar melalui proses akulturasi budaya yang mendalam. Ketika epos legendaris dari India, yaitu Ramayana dan Mahabharata, diperkenalkan dan menjadi populer di kalangan bangsawan dan masyarakat, cerita-cerita tersebut secara bertahap diadaptasi ke dalam pertunjukan wayang. Ritual pemanggilan Hyang berevolusi menjadi sebuah seni pertunjukan naratif yang kompleks dan terstruktur. Di lingkungan keraton-keraton Jawa, wayang disempurnakan dan distandarisasi menjadi sebuah seni adiluhung atau seni tingkat tinggi, lengkap dengan aturan baku (pakem) yang mengatur karakterisasi tokoh, alur cerita, hingga iringan gamelan. Transformasi ini mengubah wayang dari ritual murni menjadi sebuah medium yang menggabungkan hiburan, pendidikan moral, dan filsafat yang luhur.
+                            Memasuki era kerajaan Hindu-Buddha, wayang mengalami transformasi besar melalui proses akulturasi budaya yang mendalam. Ketika epos legendaris dari India, yaitu Ramayana dan Mahabharata, diperkenalkan dan menjadi populer di kalangan bangsawan dan masyarakat, cerita-cerita tersebut secara bertahap diadaptasi ke dalam pertunjukan wayang. Ritual pemanggilan Hyang berevolusi menjadi sebuah seni pertunjukan naratif yang kompleks dan terstruktur. Di lingkungan keraton-keraton Jawa, wayang disempurnakan dan distandarisasi menjadi sebuah seni adiluhung atau seni tingkat tinggi, lengkap dengan aturan baku (pakem) yang mengatur karakterisasi tokoh, alur cerita, hingga iringan gamelan. Transformasi ini mengubah wayang dari ritual murni menjadi sebuah medium yang menggabungkan hiburan, pendidikan moral, dan filsafat yang luhur.
                         </p>
                     </div>
                     <div class="sejarah-image">
@@ -94,32 +95,22 @@
             <img src="assets/koleksi.png" alt="Koleksi Wayang Banner" />
         </section>
 
-        <section class="koleksi-kami">
+        <section class="koleksi-kami" id="koleksi-utama-section">
             <div class="container">
                 <h4>KOLEKSI KAMI</h4>
                 <div class="koleksi-controls">
                     <div class="search-bar">
-                        <input type="search" placeholder="Cari Wayang" />
+                        <input type="search" placeholder="Cari Wayang" id="search-input" />
                     </div>
                     <div class="filter-buttons">
-                        <button class="active">Semua</button>
-                        <button>Jawa Tengah</button>
-                        <button>Jawa Timur</button>
-                        <button>Jawa Barat</button>
-                        <button>Bali</button>
+                        <button class="filter-btn active" data-filter="Semua">Semua</button>
+                        <button class="filter-btn" data-filter="Jawa Tengah">Jawa Tengah</button>
+                        <button class="filter-btn" data-filter="Jawa Timur">Jawa Timur</button>
+                        <button class="filter-btn" data-filter="Jawa Barat">Jawa Barat</button>
+                        <button class="filter-btn" data-filter="Bali">Bali</button>
                     </div>
                 </div>
-                <div class="koleksi-grid">
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
-                    <div class="koleksi-card"></div><div class="koleksi-card"></div>
+                <div class="koleksi-grid" id="koleksi-grid">
                 </div>
             </div>
         </section>
@@ -151,7 +142,6 @@
                     <div class="form-group">
                         <label for="alasan">Alasan</label>
                         <select id="alasan">
-                            <option value="koleksi">Koleksi</option>
                             <option value="saran">Saran</option>
                             <option value="kritik">Kritik</option>
                         </select>
@@ -169,6 +159,17 @@
 
     </main>
 
+    <div id="wayang-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="Detail Wayang" />
+                <h3 id="modal-nama"></h3>
+                <p id="modal-asal"></p>
+                <p id="modal-deskripsi"></p>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="container footer-grid">
             <div class="footer-about">
@@ -219,8 +220,8 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M12 5L6 11M12 5L18 11" stroke="#4a2c1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     
+    <script src="script.js"></script>
     <script>
-        // --- Hamburger Menu ---
         const hamburger = document.querySelector('.hamburger-menu');
         const navMenu = document.querySelector('nav');
 
@@ -229,25 +230,22 @@
             navMenu.classList.toggle('active');
         });
 
-        // --- Splash Screen ---
         window.addEventListener('DOMContentLoaded', () => {
             const splash = document.getElementById('splash-screen');
             
             setTimeout(() => {
                 splash.classList.add('fade-out');
-            }, 2000); // Waktu splash screen muncul (2 detik)
+            }, 2000);
 
             setTimeout(() => {
                 splash.style.display = 'none';
-            }, 2500); // Waktu fade out (0.5 detik)
+            }, 2500);
         });
 
-        // --- Animasi Teks Sejarah per Huruf ---
         const sejarahTexts = document.querySelectorAll('.sejarah-text p');
         sejarahTexts.forEach(text => {
             text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
         });
-
     </script>
 </body>
 </html>
