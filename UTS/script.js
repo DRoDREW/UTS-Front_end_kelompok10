@@ -29,95 +29,230 @@ const createWayangCard = (wayang) => {
 };
 
 const filterAndSearchWayang = () => {
-    const searchTerm = $('#search-input').val().toLowerCase().trim();
+
+    const searchTerm = $('#search-input').val() ? $('#search-input').val().toLowerCase().trim() : '';
     
     let filteredData = wayangData.filter(wayang => {
         const isFiltered = currentFilter === 'Semua' || wayang.asal === currentFilter;
-        
         const wayangNameLower = wayang.nama.toLowerCase();
-
         const isSearched = wayangNameLower.startsWith(searchTerm);
-                      
         return isFiltered && isSearched;
     });
 
-    $('#koleksi-grid').html('');
-    if (filteredData.length === 0) {
-        $('#koleksi-grid').html('<p style="grid-column: 1 / -1; font-style: italic;">Tidak ada wayang yang ditemukan.</p>');
-        return;
-    }
+    if ($('#koleksi-grid').length) {
+        $('#koleksi-grid').html('');
+        if (filteredData.length === 0) {
+            $('#koleksi-grid').html('<p style="grid-column: 1 / -1; font-style: italic;">Tidak ada wayang yang ditemukan.</p>');
+            return;
+        }
 
-    filteredData.forEach(wayang => {
-        $('#koleksi-grid').append(createWayangCard(wayang));
-    });
+        filteredData.forEach(wayang => {
+            $('#koleksi-grid').append(createWayangCard(wayang));
+        });
+    }
 };
 
 const showWayangDetail = (wayangId) => {
     const wayang = wayangData.find(w => w.id === wayangId);
     if (!wayang) return;
 
-    $('#modal-image').attr('src', wayang.image).attr('alt', wayang.nama);
-    $('#modal-nama').text(wayang.nama);
-    $('#modal-asal').html('<strong>Asal:</strong> ' + wayang.asal);
-    $('#modal-deskripsi').text(wayang.deskripsi);
+    if ($('#wayang-modal').length) {
+        $('#modal-image').attr('src', wayang.image).attr('alt', wayang.nama);
+        $('#modal-nama').text(wayang.nama);
+        $('#modal-asal').html('<strong>Asal:</strong> ' + wayang.asal);
+        $('#modal-deskripsi').text(wayang.deskripsi);
+        
+        $('#wayang-modal').css('display', 'block');
+        $('body').addClass('modal-open'); 
+    }
+};
+
+// --- Logika untuk komentar menggunakan jQuery dan localStorage ---
+
+// Kunci untuk localStorage
+const COMMENT_STORAGE_KEY = 'wayang-komentar-list';
+
+/**
+ * Mengambil daftar komentar dari localStorage.
+ * @returns {Array} Daftar komentar.
+ */
+const getComments = () => {
+    const commentsJson = localStorage.getItem(COMMENT_STORAGE_KEY);
+    try {
+        return commentsJson ? JSON.parse(commentsJson) : [];
+    } catch (e) {
+        console.error("Gagal memuat komentar dari localStorage:", e);
+        return [];
+    }
+};
+
+/**
+ * Menyimpan daftar komentar ke localStorage.
+ * @param {Array} comments - Daftar komentar yang akan disimpan.
+ */
+const saveComments = (comments) => {
+    localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(comments));
+};
+
+/**
+ * Membuat elemen HTML untuk sebuah komentar.
+ * @param {Object} comment - Objek komentar.
+ * @returns {string} String HTML.
+ */
+const createCommentHtml = (comment) => {
+    const timestamp = new Date(comment.timestamp).toLocaleDateString('id-ID', {
+        day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
     
-    $('#wayang-modal').css('display', 'block');
-    $('body').addClass('modal-open'); 
+    return `
+        <div class="komentar-item" data-id="${comment.id}">
+            <div class="komentar-header">
+                <span class="komentar-nama"><strong>${comment.nama}</strong></span>
+                <span class="komentar-timestamp">${timestamp}</span>
+            </div>
+            <p class="komentar-teks">${comment.teks}</p>
+            <button class="delete-komentar-btn" data-id="${comment.id}">Hapus</button>
+        </div>
+    `;
+};
+
+const renderComments = () => {
+    const comments = getComments();
+    const $komentarList = $('#komentar-list');
+
+    $komentarList.html(''); 
+
+    if (comments.length === 0) {
+        $komentarList.html('<p class="no-komentar">Belum ada komentar. Jadilah yang pertama!</p>');
+        return;
+    }
+
+    comments.sort((a, b) => b.timestamp - a.timestamp);
+
+    comments.forEach(comment => {
+        $komentarList.append(createCommentHtml(comment));
+    });
+};
+
+/**
+ * Menambahkan komentar baru ke daftar.
+ * @param {string} nama - Nama pengirim.
+ * @param {string} teks - Isi komentar.
+ */
+const addComment = (nama, teks) => {
+    const comments = getComments();
+    const newComment = {
+        id: Date.now(), 
+        nama: nama,
+        teks: teks,
+        timestamp: Date.now()
+    };
+    
+    comments.push(newComment);
+    saveComments(comments);
+    renderComments();
+};
+
+/**
+ * Menghapus komentar berdasarkan ID.
+ * @param {number} commentId - ID komentar yang akan dihapus.
+ */
+const deleteComment = (commentId) => {
+    let comments = getComments();
+    const initialLength = comments.length;
+
+    comments = comments.filter(comment => comment.id !== commentId);
+    
+    if (comments.length < initialLength) {
+        saveComments(comments);
+        renderComments(); 
+    } else {}
 };
 
 $(document).ready(function() {
 
-    $('#search-input').on('keyup', filterAndSearchWayang);
-
-    $('.filter-btn').on('click', function() {
-        $('.filter-btn').removeClass('active');
-        $(this).addClass('active');
-        currentFilter = $(this).data('filter');
-        filterAndSearchWayang();
+    $('#komentar-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        const nama = $('#komentar-nama').val().trim();
+        const teks = $('#komentar-teks').val().trim();
+        
+        if (nama && teks) {
+            addComment(nama, teks);
+            $(this)[0].reset(); 
+        } else {}
     });
-    
+
+    $('#komentar-list').on('click', '.delete-komentar-btn', function() {
+        const idToDelete = parseInt($(this).data('id')); 
+        
+        deleteComment(idToDelete);
+        
+    });
+    renderComments(); 
+
+    if ($('#search-input').length) {
+        $('#search-input').on('keyup', filterAndSearchWayang);
+    }
+
+    if ($('.filter-btn').length) {
+        $('.filter-btn').on('click', function() {
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            currentFilter = $(this).data('filter');
+            filterAndSearchWayang();
+        });
+    }
+
     // Logika Scroll to Top
     $(window).on('scroll', function() {
-        if ($(this).scrollTop() > 300) {
-            $('.scroll-to-top').addClass('show');
-        } else {
-            $('.scroll-to-top').removeClass('show');
+        if ($('.scroll-to-top').length) {
+            if ($(this).scrollTop() > 300) {
+                $('.scroll-to-top').addClass('show');
+            } else {
+                $('.scroll-to-top').removeClass('show');
+            }
         }
     });
 
-    $('.scroll-to-top').on('click', function(e) {
-        e.preventDefault();
-        // Menggunakan animasi jQuery yang sederhana dan cepat
-        $('html, body').animate({ scrollTop: 0 }, 0);  
-    });
+    if ($('.scroll-to-top').length) {
+        $('.scroll-to-top').on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 0); 
+        });
+    }
 
-    // Logika Form Kritik & Saran
     $('form.kritik-saran-form').on('submit', function(e) {
         e.preventDefault();
         alert("Pesan Terkirim! Terima kasih atas kritik dan saran Anda.");
         $(this)[0].reset();
     });
     
-    // Logika Modal Detail (Klik Kartu)
-    $('#koleksi-grid').on('click', '.koleksi-card', function() {
-        const id = parseInt($(this).data('id'));
-        showWayangDetail(id);
-    });
-    
-    // Event listener tombol tutup modal
-    $('.close-button').on('click', function() {
-        $('#wayang-modal').css('display', 'none');
-        $('body').removeClass('modal-open'); 
-    });
+    if ($('#koleksi-grid').length) {
+        $('#koleksi-grid').on('click', '.koleksi-card', function() {
+            const id = parseInt($(this).data('id'));
+            showWayangDetail(id);
+        });
+    }
 
-    // Event listener klik di luar modal untuk menutup
-    $(window).on('click', function(event) {
-        if (event.target.id === 'wayang-modal') {
+    if ($('.close-button').length) {
+        $('.close-button').on('click', function() {
             $('#wayang-modal').css('display', 'none');
             $('body').removeClass('modal-open'); 
-        }
-    });
+        });
+    }
 
-    // Panggil Awal
-    filterAndSearchWayang();
+    if ($('#wayang-modal').length) {
+        $(window).on('click', function(event) {
+            if (event.target.id === 'wayang-modal') {
+                $('#wayang-modal').css('display', 'none');
+                $('body').removeClass('modal-open'); 
+            }
+        });
+    }
+
+    // Panggil Awal (jika elemennya ada)
+    if ($('#koleksi-grid').length) {
+        filterAndSearchWayang();
+    }
 });
