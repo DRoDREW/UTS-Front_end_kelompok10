@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
 
 <body>
     <div id="splash-screen">
@@ -28,6 +29,7 @@
                     <li><a href="#">BERANDA</a></li>
                     <li><a href="#sejarah-section">SEJARAH</a></li>
                     <li><a href="#koleksi-utama-section">KOLEKSI</a></li>
+                    <li><a href="#stay-tuned-section" class="nowrap-link">KOMENTAR</a></li> 
                 </ul>
             </nav>
             <button class="hamburger-menu" aria-label="Buka Navigasi">
@@ -61,7 +63,7 @@
                 <div class="sejarah-item">
                     <div class="sejarah-text">
                         <p>
-                            Akar paling awal dari wayang tertanam dalam sistem kepercayaan animisme dan dinamisme asli masyarakat Nusantara, jauh sebelum masuknya pengaruh budaya India. Pada masa itu, pertunjukan ini bukanlah sebuah tontonan hiburan, melainkan sebuah ritual sakral yang bertujuan untuk memanggil roh-roh leluhur yang disebut "Hyang". Sang dalang, yang pada saat itu lebih berperan sebagai seorang pemimpin spiritual atau syaman, menjadi perantara antara dunia manusia dengan dunia roh. Melalui bayangan-bayangan yang diproyeksikan di layar, masyarakat percaya bahwa mereka dapat berkomunikasi, meminta nasihat, dan mendapat perlindungan dari para arwah nenek moyang mereka. Bentuk pertunjukannya pun masih sangat sederhana, berfokus pada kekuatan magis dan spiritual untuk keperluan ritual, seperti upacara panen atau penyembuhan.
+                            Akar paling awal dari wayang tertanam dalam sistem kepercayaan animisme dan dinamisme asli masyarakat Nusantara, jauh sebelum masuknya pengaruh budaya India. Pada masa itu, pertunjukan ini bukanlah sebuah tontonan hiburan, melainkan sebuah ritual sakral yang bertujuan untuk memanggil roh-roh leluhur yang disebut "Hyang". Sang dalang, yang pada saat itu lebih berperan sebagai seorang pemimpin spiritual atau syaman, menjadi perantara antara dunia manusia dengan dunia roh. Melalui bayangan-bayangan yang diproyeksikan di layar, masyarakat percaya bahwa mereka dapat berkomunikasi, meminta nasihat, dan mendapat perlindungan dari para arwah nenek moyang mereka. Bentuk pertunjukannya pun masih sangat sederhana, berfocus pada kekuatan magis dan spiritual untuk keperluan ritual, seperti upacara panen atau penyembuhan.
                         </p>
                     </div>
                     <div class="sejarah-image">
@@ -115,6 +117,40 @@
             </div>
         </section>
         
+        <section class="stay-tuned" id="stay-tuned-section">
+            <div class="container">
+                <div class="stay-tuned-header">
+                    <h2>Komentar</h2>
+                    <p>Berikan komentar / usulan anda terhadap website ini dengan koleksi - koleksi wayang yang ada</p>
+                </div>
+
+                <div class="komentar-form-wrapper">
+                    <form id="komentar-form" class="komentar-form">
+                        <div class="form-group">
+                            <label for="komentar-nama">Nama</label>
+                            <input type="text" id="komentar-nama" required placeholder="Nama Anda">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="komentar-teks">Komentar/Usulan</label>
+                            <textarea id="komentar-teks" rows="3" required placeholder="Tuliskan komentar atau usulan Anda di sini..."></textarea>
+                        </div>
+                        <div class="form-group full-width submit-area">
+                            <button type="submit" id="tambah-komentar-btn">Tambah Komentar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <hr class="separator-line">
+
+                <div class="komentar-list-controls">
+                    <h3>Daftar Komentar</h3>
+                </div>
+
+                <div class="komentar-list" id="komentar-list">
+                    <p class="no-komentar">Belum ada komentar. Jadilah yang pertama!</p>
+                </div>
+            </div>
+        </section>
         <section class="kritik-saran">
             <div class="container kritik-saran-wrapper">
                 <div class="kritik-saran-intro">
@@ -200,6 +236,7 @@
                     <li><a href="#">Homepage</a></li>
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Koleksi</a></li>
+                    <li><a href="#stay-tuned-section">Stay Tuned</a></li>
                 </ul>
             </div>
             <div class="footer-links">
