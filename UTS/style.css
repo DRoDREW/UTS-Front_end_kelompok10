@@ -225,9 +225,11 @@ nav ul li a:hover::after {
 .hero-banner, .sejarah-banner {
     position: relative;
     line-height: 1;
-    overflow: hidden;
+    overflow: visible;
 }
-
+.sejarah-banner{
+    margin-top: 10%;
+}
 .banner-image {
     width: 100%;
     height: auto;
@@ -254,6 +256,7 @@ nav ul li a:hover::after {
 .container-sejarah {
     position: absolute; top: 25%; left: 50%;
     transform: translateX(-50%); text-align: center;
+    margin-top: 7%;
     width: 100%;
 }
 .sejarah-banner h3 { font-size: 2.8rem; letter-spacing: 3px; color: #4a2c1a; }
@@ -275,7 +278,7 @@ nav ul li a:hover::after {
 
 .sejarah-text span:hover {
     color: #c0392b;
-    transform: scale(1.1) translateY(-2px);
+    transform: scale(1.4) translateY(-2px);
 }
 
 
@@ -323,14 +326,24 @@ nav ul li a:hover::after {
 
 .card-image-wrapper {
     position: relative;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
+    border-radius: 50%;
+    background-image: url('assets/bg-wayang.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
 }
 
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 .card-content {
@@ -426,13 +439,13 @@ nav ul li a:hover::after {
 
 
 .komentar-card {
-    background-color: #fdfcf9;
+    background: linear-gradient(135deg, #fdfcf9 0%, #f9f5ec 100%);
     padding: 1.5rem;
     border: 1px solid #d9c9a3;
     border-left: 5px solid #8B4513;
-    border-radius: 6px;
+    border-radius: 10px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
@@ -479,6 +492,37 @@ nav ul li a:hover::after {
 
 .komentar-aksi .hapus-btn:hover {
     background-color: #e74c3c;
+    color: #fff;
+}
+
+.komentar-edit-text {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    border: 1px solid #d9c9a3;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.komentar-aksi .save-komentar-btn {
+    color: #27ae60;
+    border-color: #27ae60;
+}
+
+.komentar-aksi .save-komentar-btn:hover {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.komentar-aksi .cancel-komentar-btn {
+    color: #7f8c8d;
+    border-color: #7f8c8d;
+}
+
+.komentar-aksi .cancel-komentar-btn:hover {
+    background-color: #7f8c8d;
     color: #fff;
 }
 
@@ -530,7 +574,7 @@ footer {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem;
     border-bottom: 1px solid #8c3b40; padding-bottom: 3rem; margin-bottom: 2rem;
 }
-.footer-logo { max-width: 150px; margin-bottom: 1.5rem; }
+.footer-logo { max-width: 200px; margin-bottom: 1.5rem; }
 .footer-socials { display: flex; gap: 1.5rem; }
 .footer-socials svg { width: 24px; height: 24px; }
 .footer-socials svg path { stroke: #f0e6d2; transition: stroke 0.3s ease; }
@@ -548,6 +592,26 @@ footer {
 }
 .footer-links a:hover, .footer-links ul li:hover {
     color: #D4AF37;
+}
+
+.alert-kritik-saran {
+    background-color: #f9f0e6;
+    border: 2px solid #8B4513;
+    color: #4a2c1a;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.3);
+    max-width: 600px;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.alert-kritik-saran strong {
+    color: #8B4513;
+    font-weight: 700;
 }
 
 .footer-copyright { text-align: center; font-size: 0.9rem; color: #b3a088; }
@@ -623,6 +687,29 @@ footer {
     border-radius: 5px;
 }
 
+#modal-image-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    background-image: url('assets/bg-wayang.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+}
+
 .modal-body h3 {
     font-size: 2rem;
     color: #8B4513;
@@ -679,4 +766,40 @@ footer {
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
     .footer-socials { justify-content: center; }
     .footer-about { display: flex; flex-direction: column; align-items: center; }
+    .footer-logo { max-width: 150px; }
+    .footer-visit { display: none; }
+    .scroll-to-top {
+        position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
+        background-color: #F5F5DC; border: 1px solid #6a1e2a; border-radius: 50%;
+        display: flex; justify-content: center; align-items: center; text-decoration: none;
+        transition: all 0.3s ease;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 10000;
+    }
+    .scroll-to-top:hover {
+        background-color: #6a1e2a;
+    }
+    .scroll-to-top:hover svg path {
+        stroke: #F5F5DC;
+    }
+}
+
+/* Scroll animation styles */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+  transition-timing-function: ease-in;
+}
+
+.animate-on-scroll.ease-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition-timing-function: ease-out;
 }

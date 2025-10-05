@@ -1,20 +1,45 @@
 const wayangData = [
-    { id: 1, nama: 'Arjuna', asal: 'Jawa Tengah', deskripsi: 'Satria tampan, ahli panah dan tokoh Pandawa. Arjuna adalah simbol kesempurnaan seorang ksatria yang memiliki ketenangan batin dan fokus tinggi.', image: 'assets/wayang-arjuna.png' },
-    { id: 2, nama: 'Bima', asal: 'Jawa Tengah', deskripsi: 'Kuat, jujur, memiliki kuku pancanaka. Sering disebut Werkudara. Ia melambangkan keberanian, ketegasan, dan ketaatan pada guru.', image: 'assets/wayang-bima.png' },
-    { id: 3, nama: 'Srikandi', asal: 'Jawa Tengah', deskripsi: 'Prajurit wanita, mahir memanah, istri Arjuna. Srikandi adalah lambang emansipasi dan kepahlawanan wanita.', image: 'assets/wayang-srikandi.png' },
-    { id: 4, nama: 'Semar', asal: 'Jawa Tengah', deskripsi: 'Leluhur Punakawan, dewa yang menyamar. Memberikan nasihat bijak. Semar adalah pamong yang paling dihormati, mewakili rakyat jelata namun memiliki kearifan tertinggi.', image: 'assets/wayang-semar.png' },
-    { id: 5, nama: 'Gatotkaca', asal: 'Jawa Timur', deskripsi: 'Otot kawat tulang besi, putra Bima, pahlawan udara. Ia dikenal karena kecepatan dan kekuatannya yang luar biasa dalam pertempuran.', image: 'assets/wayang-gatotkaca.png' },
-    { id: 6, nama: 'Rama', asal: 'Bali', deskripsi: 'Tokoh utama epos Ramayana. Simbol kebenaran, kesatria, dan kebajikan. Ia dikenal sebagai raja yang adil dan suami yang setia.', image: 'assets/wayang-rama.png' },
-    { id: 7, nama: 'Hanoman', asal: 'Jawa Barat', deskripsi: 'Kera putih sakti, jenderal pasukan kera Rama. Hanoman melambangkan pengabdian tanpa batas dan kesaktian yang didapat dari tapa.', image: 'assets/wayang-hanoman.png' },
-    { id: 8, nama: 'Cepot', asal: 'Jawa Barat', deskripsi: 'Punakawan khas Sunda (Wayang Golek), jenaka dan kritis. Cepot adalah karakter humoris yang sering menyindir penguasa dengan cara yang santun.', image: 'assets/wayang-cepot.png' },
-    { id: 9, nama: 'Kresna', asal: 'Jawa Tengah', deskripsi: 'Raja Dwarawati, titisan Wisnu, penasihat Pandawa. Kresna adalah ahli strategi yang cerdas dan penjelmaan dewa pemelihara alam.', image: 'assets/wayang-kresna.png' },
-    { id: 10, nama: 'Drupadi', asal: 'Jawa Tengah', deskripsi: 'Istri para Pandawa. Simbol ketabahan, kesetiaan, dan wanita dengan martabat tinggi.', image: 'assets/wayang-drupadi.png' },
-    { id: 11, nama: 'Dasamuka', asal: 'Bali', deskripsi: 'Rahwana, raja raksasa Alengka. Antagonis utama Ramayana, melambangkan sepuluh kejahatan atau nafsu duniawi.', image: 'assets/wayang-dasamuka.png' },
-    { id: 12, nama: 'Petruk', asal: 'Jawa Tengah', deskripsi: 'Punakawan yang tinggi dan kurus, dikenal humoris dan cerdik. Petruk adalah anak Semar yang selalu siap memberi solusi dengan cara yang lucu.', image: 'assets/wayang-petruk.png' },
+    { id: 1, nama: 'Arjuna', asal: 'Jawa Tengah', deskripsi: 'Satria tampan, ahli panah dan tokoh Pandawa. Arjuna adalah simbol kesempurnaan seorang ksatria yang memiliki ketenangan batin dan fokus tinggi.', image: 'assets/wayang/arjuna.png' },
+    { id: 2, nama: 'Bima', asal: 'Jawa Tengah', deskripsi: 'Kuat, jujur, memiliki kuku pancanaka. Sering disebut Werkudara. Ia melambangkan keberanian, ketegasan, dan ketaatan pada guru.', image: 'assets/wayang/bima.png' },
+    { id: 3, nama: 'Srikandi', asal: 'Jawa Tengah', deskripsi: 'Prajurit wanita, mahir memanah, istri Arjuna. Srikandi adalah lambang emansipasi dan kepahlawanan wanita.', image: 'assets/wayang/srikandi.png' },
+    { id: 4, nama: 'Semar', asal: 'Jawa Tengah', deskripsi: 'Leluhur Punakawan, dewa yang menyamar. Memberikan nasihat bijak. Semar adalah pamong yang paling dihormati, mewakili rakyat jelata namun memiliki kearifan tertinggi.', image: 'assets/wayang/semar.png' },
+    { id: 5, nama: 'Gatotkaca', asal: 'Jawa Timur', deskripsi: 'Otot kawat tulang besi, putra Bima, pahlawan udara. Ia dikenal karena kecepatan dan kekuatannya yang luar biasa dalam pertempuran.', image: 'assets/wayang/gatotkaca.png' },
+    { id: 6, nama: 'Rama', asal: 'Bali', deskripsi: 'Tokoh utama epos Ramayana. Simbol kebenaran, kesatria, dan kebajikan. Ia dikenal sebagai raja yang adil dan suami yang setia.', image: 'assets/wayang/rama.png' },
+    { id: 7, nama: 'Hanoman', asal: 'Jawa Barat', deskripsi: 'Kera putih sakti, jenderal pasukan kera Rama. Hanoman melambangkan pengabdian tanpa batas dan kesaktian yang didapat dari tapa.', image: 'assets/wayang/hanoman.png' },
+    { id: 8, nama: 'Cepot', asal: 'Jawa Barat', deskripsi: 'Punakawan khas Sunda (Wayang Golek), jenaka dan kritis. Cepot adalah karakter humoris yang sering menyindir penguasa dengan cara yang santun.', image: 'assets/wayang/cepot.png' },
+    { id: 9, nama: 'Kresna', asal: 'Jawa Tengah', deskripsi: 'Raja Dwarawati, titisan Wisnu, penasihat Pandawa. Kresna adalah ahli strategi yang cerdas dan penjelmaan dewa pemelihara alam.', image: 'assets/wayang/kresna.png' },
+    { id: 10, nama: 'Drupadi', asal: 'Jawa Tengah', deskripsi: 'Istri para Pandawa. Simbol ketabahan, kesetiaan, dan wanita dengan martabat tinggi.', image: 'assets/wayang/drupadi.png' },
+    { id: 11, nama: 'Dasamuka', asal: 'Bali', deskripsi: 'Rahwana, raja raksasa Alengka. Antagonis utama Ramayana, melambangkan sepuluh kejahatan atau nafsu duniawi.', image: 'assets/wayang/dasamuka.png' },
+    { id: 12, nama: 'Petruk', asal: 'Jawa Tengah', deskripsi: 'Punakawan yang tinggi dan kurus, dikenal humoris dan cerdik. Petruk adalah anak Semar yang selalu siap memberi solusi dengan cara yang lucu.', image: 'assets/wayang/petruk.png' },
 ];
 
 let currentFilter = 'Semua';
 
+const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash-screen');
+            
+            setTimeout(() => {
+                splash.classList.add('fade-out');
+            }, 2000);
+
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 2500);
+        });
+
+        const sejarahTexts = document.querySelectorAll('.sejarah-text p');
+        sejarahTexts.forEach(text => {
+            text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        });
+        
 const createWayangCard = (wayang) => {
     return `
         <div class="koleksi-card" data-id="${wayang.id}">
@@ -103,7 +128,7 @@ const createCommentHtml = (comment) => {
     const timestamp = new Date(comment.timestamp).toLocaleDateString('id-ID', {
         day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
     });
-    
+
     return `
         <div class="komentar-item" data-id="${comment.id}">
             <div class="komentar-header">
@@ -111,7 +136,10 @@ const createCommentHtml = (comment) => {
                 <span class="komentar-timestamp">${timestamp}</span>
             </div>
             <p class="komentar-teks">${comment.teks}</p>
-            <button class="delete-komentar-btn" data-id="${comment.id}">Hapus</button>
+            <div class="komentar-aksi">
+                <button class="edit-komentar-btn" data-id="${comment.id}">Edit</button>
+                <button class="delete-komentar-btn" data-id="${comment.id}">Hapus</button>
+            </div>
         </div>
     `;
 };
@@ -162,14 +190,36 @@ const deleteComment = (commentId) => {
     const initialLength = comments.length;
 
     comments = comments.filter(comment => comment.id !== commentId);
-    
+
     if (comments.length < initialLength) {
         saveComments(comments);
-        renderComments(); 
+        renderComments();
     } else {}
 };
 
+/**
+ * Mengupdate komentar berdasarkan ID.
+ * @param {number} commentId - ID komentar yang akan diupdate.
+ * @param {string} newText - Teks baru.
+ */
+const updateComment = (commentId, newText) => {
+    let comments = getComments();
+    const commentIndex = comments.findIndex(comment => comment.id === commentId);
+    if (commentIndex !== -1) {
+        comments[commentIndex].teks = newText;
+        comments[commentIndex].timestamp = Date.now(); // Update timestamp
+        saveComments(comments);
+        renderComments();
+    }
+};
+
 $(document).ready(function() {
+
+    $('form.kritik-saran-form').on('submit', function(e) {
+        e.preventDefault();
+        $('#kritikSaranAlert').fadeIn(300).delay(3000).fadeOut(300);
+        $(this)[0].reset();
+    });
 
     $('#komentar-form').on('submit', function(e) {
         e.preventDefault();
@@ -184,12 +234,44 @@ $(document).ready(function() {
     });
 
     $('#komentar-list').on('click', '.delete-komentar-btn', function() {
-        const idToDelete = parseInt($(this).data('id')); 
-        
+        const idToDelete = parseInt($(this).data('id'));
+
         deleteComment(idToDelete);
-        
+
     });
-    renderComments(); 
+
+    $('#komentar-list').on('click', '.edit-komentar-btn', function() {
+        const $item = $(this).closest('.komentar-item');
+        const id = parseInt($(this).data('id'));
+        const currentText = $item.find('.komentar-teks').text();
+
+        // Replace p with textarea
+        $item.find('.komentar-teks').replaceWith(`<textarea class="komentar-edit-text">${currentText}</textarea>`);
+
+        // Replace buttons with Save and Cancel
+        $item.find('.komentar-aksi').html(`
+            <button class="save-komentar-btn" data-id="${id}">Simpan</button>
+            <button class="cancel-komentar-btn" data-id="${id}">Batal</button>
+        `);
+    });
+
+    $('#komentar-list').on('click', '.save-komentar-btn', function() {
+        const id = parseInt($(this).data('id'));
+        const $item = $(this).closest('.komentar-item');
+        const newText = $item.find('.komentar-edit-text').val().trim();
+
+        if (newText) {
+            updateComment(id, newText);
+        } else {
+            renderComments(); // reset if empty
+        }
+    });
+
+    $('#komentar-list').on('click', '.cancel-komentar-btn', function() {
+        renderComments(); // reset
+    });
+
+    renderComments();
 
     if ($('#search-input').length) {
         $('#search-input').on('keyup', filterAndSearchWayang);
@@ -222,11 +304,7 @@ $(document).ready(function() {
         });
     }
 
-    $('form.kritik-saran-form').on('submit', function(e) {
-        e.preventDefault();
-        alert("Pesan Terkirim! Terima kasih atas kritik dan saran Anda.");
-        $(this)[0].reset();
-    });
+
     
     if ($('#koleksi-grid').length) {
         $('#koleksi-grid').on('click', '.koleksi-card', function() {
@@ -255,4 +333,67 @@ $(document).ready(function() {
     if ($('#koleksi-grid').length) {
         filterAndSearchWayang();
     }
+
+    // Add hover effect on hero-banner and sejarah-banner to follow cursor
+    function handleHoverEffect(containerSelector, imageSelector) {
+        const container = $(containerSelector);
+        const image = container.find(imageSelector);
+
+        container.on('mousemove', function(e) {
+            const offset = container.offset();
+            const width = container.outerWidth();
+            const height = container.outerHeight();
+            const x = e.pageX - offset.left;
+            const y = e.pageY - offset.top;
+
+            // Calculate percentage position relative to center
+            const moveX = ((x / width) - 0.5) * 40; // max 20px left/right
+            const moveY = ((y / height) - 0.5) * 40; // max 20px up/down
+
+            image.css({
+                'transform': `translate(${moveX}px, ${moveY}px) scale(1.03)`,
+                'transition': 'none'
+            });
+        });
+
+        container.on('mouseleave', function() {
+            image.css({
+                'transform': 'translate(0, 0) scale(1)',
+                'transition': 'transform 0.5s ease-in-out'
+            });
+        });
+    }
+
+    handleHoverEffect('.hero-banner', '.banner-image');
+    handleHoverEffect('.sejarah-banner', '.banner-image');
+
+    // Apply hover effect to each sejarah-image individually
+    $('.sejarah-image').each(function() {
+        const $container = $(this);
+        const $image = $container.find('img');
+
+        $container.on('mousemove', function(e) {
+            const offset = $container.offset();
+            const width = $container.outerWidth();
+            const height = $container.outerHeight();
+            const x = e.pageX - offset.left;
+            const y = e.pageY - offset.top;
+
+            // Calculate percentage position relative to center
+            const moveX = ((x / width) - 0.5) * 40; // max 20px left/right
+            const moveY = ((y / height) - 0.5) * 40; // max 20px up/down
+
+            $image.css({
+                'transform': `translate(${moveX}px, ${moveY}px) scale(1.03)`,
+                'transition': 'none'
+            });
+        });
+
+        $container.on('mouseleave', function() {
+            $image.css({
+                'transform': 'translate(0, 0) scale(1)',
+                'transition': 'transform 0.5s ease-in-out'
+            });
+        });
+    });
 });
