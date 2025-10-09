@@ -245,10 +245,8 @@ $(document).ready(function() {
         const id = parseInt($(this).data('id'));
         const currentText = $item.find('.komentar-teks').text();
 
-        // Replace p with textarea
         $item.find('.komentar-teks').replaceWith(`<textarea class="komentar-edit-text">${currentText}</textarea>`);
 
-        // Replace buttons with Save and Cancel
         $item.find('.komentar-aksi').html(`
             <button class="save-komentar-btn" data-id="${id}">Simpan</button>
             <button class="cancel-komentar-btn" data-id="${id}">Batal</button>
@@ -334,7 +332,6 @@ $(document).ready(function() {
         filterAndSearchWayang();
     }
 
-    // Add hover effect on hero-banner and sejarah-banner to follow cursor
     function handleHoverEffect(containerSelector, imageSelector) {
         const container = $(containerSelector);
         const image = container.find(imageSelector);
@@ -346,9 +343,8 @@ $(document).ready(function() {
             const x = e.pageX - offset.left;
             const y = e.pageY - offset.top;
 
-            // Calculate percentage position relative to center
-            const moveX = ((x / width) - 0.5) * 40; // max 20px left/right
-            const moveY = ((y / height) - 0.5) * 40; // max 20px up/down
+            const moveX = ((x / width) - 0.5) * 40; 
+            const moveY = ((y / height) - 0.5) * 40; 
 
             image.css({
                 'transform': `translate(${moveX}px, ${moveY}px) scale(1.03)`,
@@ -367,7 +363,6 @@ $(document).ready(function() {
     handleHoverEffect('.hero-banner', '.banner-image');
     handleHoverEffect('.sejarah-banner', '.banner-image');
 
-    // Apply hover effect to each sejarah-image individually
     $('.sejarah-image').each(function() {
         const $container = $(this);
         const $image = $container.find('img');
@@ -379,9 +374,8 @@ $(document).ready(function() {
             const x = e.pageX - offset.left;
             const y = e.pageY - offset.top;
 
-            // Calculate percentage position relative to center
-            const moveX = ((x / width) - 0.5) * 40; // max 20px left/right
-            const moveY = ((y / height) - 0.5) * 40; // max 20px up/down
+            const moveX = ((x / width) - 0.5) * 40; 
+            const moveY = ((y / height) - 0.5) * 40; 
 
             $image.css({
                 'transform': `translate(${moveX}px, ${moveY}px) scale(1.03)`,
